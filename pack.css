@@ -1,0 +1,136 @@
+*{
+  padding: 0px;
+  margin: 0px;
+}
+.pack{  
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+  padding: 100px;
+  width: auto;
+  height:auto;
+  padding-bottom: 20px;
+}
+/*Setting the image sizes*/
+.pack img{
+  width: 400px;
+  height:600px;
+}
+/*Help in alligning them beside  each other 
+not on in every line*/
+.col{
+  display: inline-block;
+  border-radius: 10px;
+  padding-top: 150px;
+  padding: 10px;
+  width: auto;
+  height:auto;
+}
+.title{ 
+ font-family: Oswald, sans-serif;
+  width: auto;
+  height: auto;
+  position: absolute;
+  display: inline-block;
+  margin-left: 24px;
+  margin-top: 540px;
+}
+.title h2{
+  background: #FFFFFF;
+  border-color: red;
+  border:solid 5 5 5px;
+  width: 350px;
+  text-align: center;
+  text-shadow: -3px 3px 4px #9398F0 ;
+  line-height: 2.2;
+
+  height: 150px;
+  border-radius: 100%;
+  font-size: 60px;
+
+  }
+
+/*For the cities box*/
+.content{                   //details
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 55px;
+  width: 400px;
+  height:320PX;
+  background: #00539C;
+  padding-top: 50px;
+  color: #fff
+}
+
+.content ul li{
+
+  list-style: none;
+  color: #fff
+  width: auto;
+  font-size: 35px;
+  position:relative;
+}
+.btn :link,.btn :visited {
+  font-family: Oswald, sans-serif; 
+  background-color: white;
+  color: #00539C ;
+  border: 2px solid #00539C;
+  padding: 20px 50px;
+  text-align: center;
+  font-size: 40px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 50px;
+}
+
+.glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+.btn: hover , .btn :active
+ {
+  background-color: #00539C;
+  color: white;
+ }
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 30px #FFFFFF, 0 0 40px #FFFFFF, 0 0 50px #FFFFFF, 0 0 60px #FFFFFF, 0 0 70px #FFFFFF;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #9398F0 , 0 0 30px #9398F0 , 0 0 40px #9398F0 , 0 0 50px #9398F0, 0 0 60px #9398F0, 0 0 70px #9398F0 , 0 0 80px #9398F0 ;
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+}
+
+.dropdown-content{
+  width: auto;
+  display: none;
+  position: absolute;
+  color: black;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 20px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.triangle-up {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  border-left: 205px solid transparent;
+  border-right: 205px solid transparent;
+  border-bottom: 80px solid #fff;
+  margin-top:30px;
+
+}

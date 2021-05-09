@@ -2,13 +2,7 @@
     
     include 'Admin.php'; 
     
-    
-    if(isset($_POST['Add']))
-    {
-     
-        
-    }
-    
+
     ?>
     
  

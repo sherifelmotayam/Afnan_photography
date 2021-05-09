@@ -53,7 +53,12 @@ input[type=submit]
     color:white;
     
 }
-
+input[type=file]
+{
+    
+    
+    
+}
 .inputfile
 {
     visibility: hidden;
