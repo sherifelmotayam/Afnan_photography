@@ -12,7 +12,7 @@ align-items: right;
   left: 350px;
   padding: 15px 15px;
   margin-top: 100px;
-  border: 2px dashed #00539C;
+  border: 2px dashed #ffffff;
   height: 300px;
   width: 500px;
   border-radius: 5px;
@@ -22,12 +22,12 @@ align-items: right;
   flex-direction: column;
 }
 .drag-area.active{
-  border: 2px solid #fff;
+  border: 2px solid #ffffff;
 }
 /*icon color and size*/
 .drag-area .icon{
   font-size: 100px;
-  color: 00539C;
+  color: white;
 }
 
 /* Drag & Drop to Upload File text*/
@@ -36,19 +36,19 @@ align-items: right;
   text-align:center;
   font-size: 30px;
   font-weight: 500;
-  color: #fff;
+  color: #ffffff;
 }
 .drag-area span{
   font-size: 25px;
   font-weight: 100;
-  color: #fff;
+  color: #ffffff;
   margin: 10px 0 15px 0;
 }
 .drag-area button { /*upload file button*/
     padding: 10px 10px;
   font-size: 20px;
   font-weight: 500;
-  background: #00539C;
+  background: #ffffff;
   color: white;
   border-radius: 1px;
   cursor: pointer;
@@ -60,7 +60,7 @@ align-items: right;
   object-fit: cover;
   border-radius: 5px;
 }
-  
+
 .custom-select {
     position: fixed;
     left: 950px;
@@ -79,7 +79,7 @@ align-items: right;
 }
 
 .select-selected {
-    background-color: #00539C;
+    background-color: #ffffff;
 }
 
 /*style the arrow inside the select element:*/
@@ -91,7 +91,7 @@ align-items: right;
     width: 0;
     height: 0;
     border: 6px solid transparent;
-    border-color: #fff transparent transparent transparent;
+    border-color: #ffffff transparent transparent transparent;
 }
 
 /*point the arrow upwards when the select box is open (active):*/
@@ -114,7 +114,7 @@ align-items: right;
 /*style items (options):*/
 .select-items {
     position: absolute;
-    background-color: #00539C;
+    background-color: #ffffff;
     top: 100%;
     left: 0;
     right: 0;
@@ -136,8 +136,8 @@ align-items: right;
     width: 300px;
   }
 
- a { 
-    color: white; 
+ a {
+    color: white;
    }
 
  .next{
@@ -147,12 +147,12 @@ align-items: right;
     padding: 10px 10px;
     font-size: 20px;
     font-weight: 500;
-    background: #00539C;
+    background: #ffffff;
     color: white;
     border-radius: 1px;
     cursor: pointer;
- } 
- 
+ }
+
  .add{
     color: black;
     position: fixed;

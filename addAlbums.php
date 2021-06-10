@@ -1,5 +1,35 @@
-<?php 
-    include 'Admin.php'; 
+<?php
+    declare(strict_types=1 );
+    include 'includes/class-autoloaded.php';
+    include 'Admin.php';
+
+    if(isset($_POST['submit']))
+        {
+         $name=$_POST['name'];
+         $filename=$_FILES['image']['name'];
+         $tmp=$_FILES['image']['tmp_name'];
+
+          if(empty($name))
+          {
+            $_SESSION['sign_msg'] = "Name empty!";
+          }
+
+        $allowed_image_extension = array("png","jpg","jpeg");
+        //$file_extension = pathinfo($_FILES["image"]["tmp_name"], PATHINFO_EXTENSION);
+/*
+        if (! file_exists($tmp))
+                {
+                $_SESSION['sign_msg'] = "put image";
+
+               }    // Validate file input to check if is with valid extension
+            else if (! in_array($file_extension, $allowed_image_extension))
+                {
+
+                    $_SESSION['sign_msg'] = "Upload valiid images. Only PNG and JPEG are allowed.";
+                }
+*/
+        }
+
    ?>
 <html lang="en">
 
@@ -20,37 +50,26 @@
 
 <body>
 
+  <form action="addAlbums.php" method="post" enctype="multipart/form-data">
 
     <div class="drag-area">
         <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
         <header>Drag & Drop to Upload File</header>
         <span>OR</span>
-        <button> Upload file </button>
-        <input type="file" hidden>
+        <button> Upload  </button>
+        <input type="file" name="image" hidden>
     </div>
 
-    <div class="custom-select" style="width:300px;">
 
-        <select>
-            <option value="0">Select Type:</option>
-            <option value="1">Wedding</option>
-            <option value="2">Engagment</option>
-            <option value="3">Birthday</option>
-            <option value="4">Graduation</option>
-            <option value="5">Casual</option>
-            <option value="6">Other</option>
-        </select>
+    <div class="type">
+        <label for="name"> Album name: </label> <br><br>
+        <input  class="label" type="text" id="name" name="name">
     </div>
 
-    <form class="type">
-        <label for="name"> Enter Image name: </label> <br><br>
-        <input class="label" type="text" id="name" name="name">
-    </form>
 
-    <form>
     <h1 class="add "> Add Albums </h1>
         <br> <br> <br> <br>
-        <button class="next" ><a href="addGallery.php"> Next </a></button>
+ <input type = "submit" name = "submit" value = "submit" class="next">
     </form>
 
     <script>

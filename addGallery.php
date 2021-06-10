@@ -1,14 +1,16 @@
+<?php
+    declare(strict_types=1 );
+    include 'includes/class-autoloaded.php';
+    include 'Admin.php';
 
-<?php 
-    include 'Admin.php'; 
+
    ?>
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="addAlbums.css">
 
-    <title> add Gallerys </title>
-    <link rel="stylesheet" href="addGallery.css">
-
+    <title> Add Gallery </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
@@ -22,13 +24,20 @@
 
 <body>
 
+  <form action="addAlbums.php" method="post" enctype="">
 
     <div class="drag-area">
         <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
         <header>Drag & Drop to Upload File</header>
-
+        <span>OR</span>
         <button> Upload file </button>
         <input type="file" hidden>
+    </div>
+
+
+    <div class="type">
+        <label for="name"> Enter Image name: </label> <br><br>
+        <input class="label" type="text" id="name" name="name">
     </div>
 
     <div class="custom-select" style="width:300px;">
@@ -44,18 +53,10 @@
         </select>
     </div>
 
-    <form class="type">
-        <label for="name"> Enter Image name: </label> <br><br>
-        <input class="label" type="text" id="name" name="name">
-
-    </form>
-
-    <form>
-    <h1 class="add "> Add Gallerys </h1>
+    <h1 class="add "> Add Albums </h1>
         <br> <br> <br> <br>
-        <button class="next"><a href="addImages.php"> Next </a></button>
+        <input type="submit" name="submit" class="next" >
 
-        <button class="back"><a href="addAlbums.php"> back </a></button>
     </form>
 
     <script>
@@ -203,5 +204,4 @@
     </script>
 
 </body>
-
 </html>

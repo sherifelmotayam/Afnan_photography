@@ -48,7 +48,7 @@ align-items: right;
     padding: 10px 10px;
   font-size: 20px;
   font-weight: 500;
-  background: #00539C;
+  background: #ffffff;
   color: white;
   border-radius: 1px;
   cursor: pointer;
@@ -60,7 +60,7 @@ align-items: right;
   object-fit: cover;
   border-radius: 5px;
 }
-  
+
 .custom-select {
     position: fixed;
     left: 950px;
@@ -79,7 +79,7 @@ align-items: right;
 }
 
 .select-selected {
-    background-color: #00539C;
+    background-color: #ffffff;
 }
 
 /*style the arrow inside the select element:*/
@@ -136,8 +136,8 @@ align-items: right;
     width: 300px;
   }
 
- a { 
-    color: white; 
+ a {
+    color: white;
    }
 
  .next{
@@ -151,7 +151,7 @@ align-items: right;
     color: white;
     border-radius: 1px;
     cursor: pointer;
- } 
+ }
  .back{
     position: fixed;
     left: 1100px;

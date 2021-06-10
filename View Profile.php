@@ -1,106 +1,89 @@
 <?php
-
-          session_start();
-    
-
-$Test['id']=2;
-include 'conn.php';
-include "Admin.php"; 
-  
-$sql = "SELECT * FROM Admin WHERE ID =1";
-      $result = mysqli_query($conn, $sql);
-      while($row = mysqli_fetch_row($result)){
-      
-      $Username=$row[1];     
-      $FirstName=$row[2];
-      $LastName=$row[3];
-      $Email=$row[4];
-      $Password=$row[5];
-      $PhoneNumber=$row[6];
-      $Profilepicture=$row[7];
-      }    
+  declare(strict_types=1 );
+  include 'includes/class-autoloaded.php';
+  include "Admin.php";
+  $id=14;
+  $Admin=new Admin();
+  $Admin->viewprofile($id);
+  $image=$Admin->getimage();
+  $fname=$Admin->getfirstname();
+  $lname=$Admin->getlastname();
+  $img=$Admin->getimage();
+  $eml=$Admin->getemail();
+  $phnnumber=$Admin->getphonenumber();
+  $pass=$Admin->getpassword();
     ?>
 
-
-
 <html>
- <head>
-  <title>Profile</title>
-  <link rel = "stylesheet" href = "View Profile.css">          
- </head>
+  <head>
+    <title>Profile</title>
+    <link rel = "stylesheet" href = "View Profile.css">
+  </head>
   <body>
-    
-      <h1 style = 'color:red'>View Profle123</h1>
-      
-        <div class="profile" style = 'height: 620px;margin-right:250px; margin-top: 20px;'>
-  	
-          <form action="View Profile.php" method="post" enctype="multipart/form-data">
+    <h1 style = 'color:red'>View Profle123</h1>
+    <div class="profile" style = 'height: 620px;margin-right:250px; margin-top: 20px;'>
+  	  <form action="View Profile.php" method="post" enctype="multipart/form-data">
+        <?php print "<img src = 'Admin/$img' style = ' width: 200px; height: 200px; margin-right: 485px; padding-top: 0px;  margin-buttom:200px;'>"?>;
+		    <input type = "file" name = "image">
 
-    <?php print "<img src = 'Adminsphotos/$Profilepicture' style = ' width: 200px; height: 200px; margin-right: 485px; padding-top: 0px;  margin-buttom:200px;'>"?>;
-		<input type = "file" name = "upload"   >
-     
-              
-       
-           <label>
-               <p>First Name</p><input type="text" name = "Fname" placeholder = "First Name" value = '<?php print "$FirstName"; ?> '>
-           
-               <p>Last Name</p><input type="text" name = "Lname" placeholder = "Last Name" value = '<?php print "$LastName"; ?> '>
-           </label>
-           
-           
-              <p>Email</p> <input type="text" name = "Eml" placeholder = "Email" value = '<?php print "$Email"; ?> '> 
-           
-              <p>Phone Number</p><input type="text" name = "Pumber" placeholder = "Phone Number" value = '<?php print "$PhoneNumber"; ?> '>
-           
-              <p>Password</p><input type="Password" name = "Pass" placeholder = "Password" value = '<?php print "$Password"; ?> '>
-   
-           <input type = "submit" value = "Edit" name = "Edit">
+        <label>
+          <p>First Name</p><input type="text" name = "Fname" placeholder = "First Name" value = '<?php print "$fname"; ?> '>
+          <p>Last Name</p><input type="text" name = "Lname" placeholder = "Last Name" value = '<?php print "$lname"; ?> '>
+        </label>
 
-       </form>
-        <center>
-			<?php
-			
-                  if(isset($_POST['Edit']))
-      {
-              
-      $FirstName1=$_POST['Fname'];
-      $LastName1=$_POST['Lname'];
-      $Email1=$_POST['Eml'];
-      $Password1=$_POST['Pass'];
-      $PhoneNumber1=$_POST['Pumber'];
-                      
+        <p>Email</p> <input type="text" name = "Eml" placeholder = "Email" value = '<?php print "$eml"; ?> '>
+        <p>Phone Number</p><input type="text" name = "Pumber" placeholder = "Phone Number" value = '<?php print "$phnnumber"; ?> '>
+        <p>Password</p><input type="Password" name = "Pass" placeholder = "Password" value = '<?php print "$pass"; ?> '>
 
-           if(preg_match("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$^", $FirstName1) == 0){
-        $_SESSION['errmsg'] = "First Name should be characters only!"; 
-	   
-      }
-      if(preg_match("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$^", $LastName1) == 0){
-        $_SESSION['errmsg'] = "Last Name should be characters only!"; 
-	   
-      }
-      $e = filter_var($_POST['Eml'],FILTER_SANITIZE_EMAIL);
-        if(!filter_var($e,FILTER_VALIDATE_EMAIL))
-        {
-           $_SESSION['errmsg'] = "Not a valid email address!"; 
-        }
-            
-            if(isset($_SESSION['msg'])){
-					
-                 $editQuery = "UPDATE `Admin` SET `First_Name` = '$FirstName1', `Last_Name` = '$LastName1', `Email` = '$Email1',`Password`='$Password1', WHERE `ID` = 1";
-          mysqli_query($conn,$editQuery);      
-          $_SESSION['msg'] = "Edited successful. You may login now!"; 
-                
-                echo $_SESSION['msg'];
-					unset($_SESSION['msg']);
-				}
-                else if(isset($_SESSION['errmsg'])){
-                    echo $_SESSION['errmsg'];
-					unset($_SESSION['errmsg']);
-                }
-                  }
-			?>
-			</center>
-	</div>
+        <input type = "submit" value = "Edit" name = "Edit">
+
+  	  </form>
+      <center>
+			  <?php
+          if(isset($_POST['Edit']))
+              {
+                $filename=$_FILES['image']['name'];
+                $tmp=$_FILES['image']['tmp_name'];
+                $firstname=$_POST['Fname'];
+                $lastname=$_POST['Lname'];
+                $email=$_POST['Eml'];
+                $password=$_POST['Pass'];
+                $phonenumber=$_POST['Pumber'];
+                if(preg_match("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$^", $firstname) == 0)
+                    {
+                       $_SESSION['errmsg'] = "First Name should be characters only!";
+                    }
+                if(preg_match("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$^", $lastname) == 0)
+                    {
+                       $_SESSION['errmsg'] = "Last Name should be characters only!";
+                     }
+
+                $e = filter_var($_POST['Eml'],FILTER_SANITIZE_EMAIL);
+                if(!filter_var($e,FILTER_VALIDATE_EMAIL))
+                     {
+                        $_SESSION['errmsg'] = "Not a valid email address!";
+                     }
+
+                if(!isset($_SESSION['errmsg']))
+                     {
+                      $Admin->Editprofile($id,$firstname,$lastname,$email,$password,$filename,$phonenumber);
+
+
+                     }
+                if(!isset($_SESSION['errmsg']))
+                     {
+					              echo $_SESSION['msg'];
+				               	unset($_SESSION['msg']);
+			                  header('location: View Profile.php');
+                     }
+                else if(isset($_SESSION['errmsg']))
+                     {
+                       echo $_SESSION['errmsg'];
+					             unset($_SESSION['errmsg']);
+                     }
+              }
+			  ?>
+      </center>
+    </div>
   </body>
 </html>
-

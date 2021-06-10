@@ -43,7 +43,6 @@
 <?php
 if (isset($_POST['AddAdmin']))
  {
-  print "<script>alert ('Data didnt inserted') </script>";
 
     $filename=$_FILES['image']['name'];
     $tmp=$_FILES['image']['tmp_name'];
@@ -104,7 +103,7 @@ if (isset($_POST['AddAdmin']))
         }
       else
         {
-          $Admin=new Admin($firstname,$lastname,$user,$email,$password,$filename);
+          $Admin=new Admin($firstname,$lastname,$user,$email,$password,$filename,$phonenumber);
           $Admin->AddAdmin();
           move_uploaded_file($tmp,"Admin/".$filename);
 

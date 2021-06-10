@@ -1,14 +1,19 @@
+<?php
+    declare(strict_types=1 );
+    include 'includes/class-autoloaded.php';
+    include 'Admin.php';
 
-<?php 
-    include 'Admin.php'; 
+    if (isset($_POST['submit']))
+     {
+       print "<script>alert ('empty course Name') </script>";
+     }
    ?>
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="addAlbums.css">
 
-    <title> add Image </title>
-    <link rel="stylesheet" href="addImages.css">
-
+    <title> Add Images </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
@@ -22,13 +27,20 @@
 
 <body>
 
+  <form action="addAlbums.php" method="post" enctype="">
 
     <div class="drag-area">
         <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
         <header>Drag & Drop to Upload File</header>
-
+        <span>OR</span>
         <button> Upload file </button>
         <input type="file" hidden>
+    </div>
+
+
+    <div class="type">
+        <label for="name"> images name: </label> <br><br>
+        <input class="label" type="text" id="name" name="name">
     </div>
 
     <div class="custom-select" style="width:300px;">
@@ -44,16 +56,9 @@
         </select>
     </div>
 
-    <form class="type">
-        <label for="name"> Enter Image name: </label> <br><br>
-        <input class="label" type="text" id="name" name="name">
-
-    </form>
-
-    <form>
-    <h1 class="add "> Add Image </h1>
+    <h1 class="add "> Add Gallery </h1>
         <br> <br> <br> <br>
-        <button class="next"><a> Submit </a></button>
+        <input type="submit" name="submit" class="next" >
 
     </form>
 
@@ -202,5 +207,4 @@
     </script>
 
 </body>
-
 </html>
