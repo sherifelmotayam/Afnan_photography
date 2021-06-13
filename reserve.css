@@ -1,0 +1,24 @@
+
+  table{
+  margin-left:540px ;
+  margin-top: 50px;
+  border-radius: 15px;
+  }
+  th{
+    color: white;
+    background: #00539C;
+  }
+  tr{
+    color: black;
+  }
+  tr:hover{
+    background: #808080;
+    color: white;
+  }
+  .delete{
+    margin-left: 100px;
+    margin-top: 500px;
+  }
+  .delete .sub{
+    margin-left: 600px;
+  }
