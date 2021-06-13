@@ -31,7 +31,7 @@
 		<a href="AddAdmin.php"><i class="fas fa-plus-circle"></i><span>Add Admin</span></a>
         <a href="View%20Profile.php"><i class="fas fa-cog"></i><span>Edit Profile</span></a>
 
-        <a href="addAlbums.php"><i class="fas fa-plus-circle"></i><span>Add Album</span></a>
+        <a href="addAlbum.php"><i class="fas fa-plus-circle"></i><span>Add Album</span></a>
         <a href="AddGallery.php"><i class="fas fa-plus-circle"></i><span>Add Gallery</span></a>
         <a href="addImages.php"><i class="fas fa-plus-circle"></i><span>Add Images</span></a>
 
