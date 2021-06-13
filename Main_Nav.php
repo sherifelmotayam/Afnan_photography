@@ -27,6 +27,7 @@
 		<a href="https://vm.tiktok.com/ZMeuNFDKS/" id="tiktok" target="_blank"><i class="fab fa-tiktok"></i>Tiktok</a>	
 	</div>
 	<!--<script>
+	<script>
 	var icon=document.getElementById("icon");
 	icon.onclick = function(){
 		document.body.classList.toggle("dark-theme");
