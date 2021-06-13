@@ -5,7 +5,7 @@ class conn
    private $host = "localhost";
    private $username = "root";//username
    private $pass = "";
-   private $db_name = "afnan_photography";
+   private $db_name = "1";
 //private $connect;
 
    protected function connect()
