@@ -18,7 +18,7 @@ body {
 }
 
 .container img {
-    max-width: 1300px;
+    max-width: 400px;
     transform-origin: center;
     transform: perspective(800px) rotateY(30deg);
     transition: .10s;
