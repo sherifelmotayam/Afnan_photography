@@ -1,0 +1,50 @@
+	form{
+		border: 3px solid lightgrey;
+		border-radius:10px ;
+		width: 400px;
+		height: 400px;
+		margin-left:700px;
+		margin-top: 250px;
+		background: white;
+	}
+	.ab{
+		margin-top: 110px;
+	}
+	 img{
+		position: absolute;
+		width: 120px;
+		height: 120px;
+		margin-left: 130px;
+		
+	}
+	label{
+		padding: 3px;
+		margin: 20px;
+		font-size: 22px;
+	}
+	input[type=text],[type=password]
+	{
+		font-size: 18px;
+		margin: 10px;
+		margin-left: 25px;
+		height: 30px;
+		width: 90%;
+		border-radius: 10px;
+	}
+	.submit
+	{
+		text-align: center;
+		width: 90%;
+		font-size: 22px;
+		margin-left: 20px;
+		margin-top: 50px;
+		height: 40px;
+		color: white;
+		background-color: #00539C;
+		border-radius: 10px;
+	}
+	.submit:hover
+	{
+		color: black;
+		opacity: 0.9;
+	}
