@@ -113,6 +113,18 @@ public function displayPackage()
 }
 
 
+public function displayQuestions()
+{
+    $sql = "SELECT DISTINCT questions FROM `questions`";
+    $stmt=$this->connect()->query($sql);
+    while($row=$stmt->fetch())
+    {
+      echo '<option value="'.$row['questions'].'">'.$row['questions'].'</option>' ;
+      echo $row['questions'];
+    }   
+}
+
+
 
 public function sendbody(){
 $body=<<<EOD

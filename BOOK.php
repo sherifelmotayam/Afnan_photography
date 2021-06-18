@@ -25,9 +25,8 @@ include 'includes/class-autoloaded.php';
     <script src="https://smtpjs.com/v3/smtp.js"></script>
   
   <script type="text/javascript">
-    function sendEmail(var x) {
-      
-        document.write(x);
+    function sendEmail() {
+      var fn=document.getElementsByName("fn").value;
       Email.send({
         Host: "smtp.gmail.com",
         Username: "test1815007@gmail.com",
@@ -35,7 +34,7 @@ include 'includes/class-autoloaded.php';
         To:"ahmed1815007@miuegypt.edu.eg",
         From: "test1815007@gmail.com",
         Subject: "new reservation",
-        Body: x,
+        Body:  fn,
 
       })
         .then(function (message) {alert("mail sent successfully")});
@@ -105,7 +104,7 @@ include 'includes/class-autoloaded.php';
             <span class="details">Question</span>
             <input list="Questions"   placeholder="Enter session location" name="question" autocomplete="off"  value="<?php if (isset($_POST["location"])){ echo $_POST["location"];}?>" >
             <datalist id="Questions"> 
-            <?php $city=new UserValidation(); $city->displayCity()?>
+            <?php $city=new UserValidation(); $city->displayQuestions()?>
             </datalist>
           </div>
           <div class="input-box">
@@ -132,12 +131,13 @@ include 'includes/class-autoloaded.php';
 $test= new UserValidation();
 if (isset($_POST['ahmed'])) 
 {
-  $x = "<?php echo $test->getDate()?>";
-  echo "<script> sendEmail($x);  </script>";
+
 
   $test->setData($_POST['fn'],$_POST['ln'],$_POST['phone'],$_POST['loc'],$_POST['package'],$_POST['date'],$_POST['time'],$_POST['Comment']);
   $test->checkdate();
   $test->check_validation();
+
+
 }
 
 
