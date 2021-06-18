@@ -13,10 +13,7 @@
 			<i class="fas fa-bars" id="sidebar_btn"></i>
 		</label>
         <div>
-        <center>
-
-
-  		</center>
+     
         </div>
 		<div class="right_area" style = 'margin-top: -15px;'>
 

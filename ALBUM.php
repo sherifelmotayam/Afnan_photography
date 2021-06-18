@@ -16,7 +16,7 @@ declare(strict_types=1);
 <body>
     <h1 class="tit"> Albums </h1>
      <?php
-      $album=new album();
+      $album=new album("data","data");
       $getdata=  $album->viewalbum();
         foreach ($getdata as $data)
          {

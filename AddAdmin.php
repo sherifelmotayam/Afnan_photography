@@ -1,6 +1,6 @@
 <?php
     declare(strict_types=1 );
-    include 'Admin.php';
+   // include 'Admin.php';
     include 'includes/class-autoloaded.php';
 ?>
 <!DOCTYPE html>
@@ -53,63 +53,79 @@ if (isset($_POST['AddAdmin']))
     $password=$_POST['Password'];
     $repassword=$_POST['Re-password'];
     $user = strtok($email, '@');
-     if(preg_match("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z])$^", $firstname) == 0)
-        {
-        $_SESSION['sign_msg'] = "Name should be characters only!";
-   	     }
-     if(preg_match("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z])$^", $lastname) == 0)
-        {
-      $_SESSION['sign_msg'] = "Name should be characters only!";
-         }
+    if(!empty($filename)||!empty($firstname)||!empty($lastname)||!empty($phonenumber)||!empty($email)||!empty($password)||!empty($repassword))
+     {
 
-     $filtered_phone_number = filter_var($phonenumber, FILTER_SANITIZE_NUMBER_INT);
-      // Remove "-" from number
-     $phone_to_check = str_replace("-", "", $filtered_phone_number);
-      // Check the lenght of number
-      // This can be customized if you want phone number from a specific country
-     if (strlen($phone_to_check) < 11 || strlen($phone_to_check) > 11)
-         {
-        $_SESSION['sign_msg'] = "phone number must be 11 number only!";
-         }
+             if(preg_match("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z])$^", $firstname) == 0)
+                 {
+                   $_SESSION['sign_msg'] = "Name should be characters only!";
+                 }
+            
+             if(preg_match("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z])$^", $lastname) == 0)
+                 {
+                   $_SESSION['sign_msg'] = "Name should be characters only!";
+                 }
 
-     $e = filter_var($email,FILTER_SANITIZE_EMAIL);
-     if(!filter_var($e,FILTER_VALIDATE_EMAIL))
-        {
-          $_SESSION['sign_msg'] = "Not a valid email address!";
-        }
+              $filtered_phone_number = filter_var($phonenumber, FILTER_SANITIZE_NUMBER_INT);
+              // Remove "-" from number
+              $phone_to_check = str_replace("-", "", $filtered_phone_number);
+              // Check the lenght of number
+              // This can be customized if you want phone number from a specific country
+             if (strlen($phone_to_check) < 11 || strlen($phone_to_check) > 11)
+                {
+                  $_SESSION['sign_msg'] = "phone number must be 11 number only!";
+                }
 
-
-     if($password !=$repassword)
-        {
-          $_SESSION['sign_msg'] = "Password doesnt match!";
-        }
-
-      else
-        {
-           $password  = md5($_POST['Password']);
-           $uppercase = preg_match('@[A-Z]@', $password);
-           $lowercase = preg_match('@[a-z]@', $password);
-           $number    = preg_match('@[0-9]@', $password);
-           if (!$uppercase || !$lowercase || !$number || strlen($_POST['password']) < 5)
-              {
-               $_SESSION['sign_msg'] = "Password must Contain at least 5 Characters!";
-              }
-        }
-
-     if(isset($_SESSION['sign_msg']))
-        {
-           echo $_SESSION['sign_msg'];
-           unset($_SESSION['sign_msg']);
-        }
-      else
-        {
-          $Admin=new Admin($firstname,$lastname,$user,$email,$password,$filename,$phonenumber);
-          $Admin->AddAdmin();
-          move_uploaded_file($tmp,"Admin/".$filename);
+              $e = filter_var($email,FILTER_SANITIZE_EMAIL);
+              if(!filter_var($e,FILTER_VALIDATE_EMAIL))
+                {
+                  $_SESSION['sign_msg'] = "Not a valid email address!";
+                }
 
 
+              if($password =$repassword)
+                {
+                  $password  = md5($_POST['Password']);
+                  $uppercase = preg_match('@[A-Z]@', $password);
+                  $lowercase = preg_match('@[a-z]@', $password);
+                  $number    = preg_match('@[0-9]@', $password);
+            
+                 if (!$uppercase || !$lowercase || !$number) 
+                      {
+                      $_SESSION['sign_msg'] = "Password must Contain at least 5 Characters!";
+                      }
+                                
+                }
 
-        }
+              else
+                {
+                  $_SESSION['sign_msg'] = "Password doesnt match!";
+
+                }
+
+              if(isset($_SESSION['sign_msg']))
+                {
+                  echo $_SESSION['sign_msg'];
+                  unset($_SESSION['sign_msg']);
+                }
+               else
+                {
+                  $Admin=new Admin($firstname,$lastname,$user,$email,$password,$filename,$phonenumber);
+                  $Admin->AddAdmin();
+                  move_uploaded_file($tmp,"Admin/".$filename);
+                }
+     }
+     else
+     {
+      $_SESSION['sign_msg'] = "Please fill all data!";
+      echo $_SESSION['sign_msg'];
+      unset($_SESSION['sign_msg']);
+              
+
+
+     }
+
+    
   }
 
 
