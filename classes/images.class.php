@@ -7,15 +7,16 @@ public $Image_Description;
 public $Image_Type;
 
 
-public function __construct1($Image_Name,$Image_Description,$Image_Type)
+public function __construct($Image_Name,$Image_Description,$Image_Type)
 {
 $this->Image_Name=$Image_Name;
 $this->Image_Description=$Image_Description;
 $this->Image_Type=$Image_Type;
 }
 
-public function addimage($id)
+public function addimage()
 {
+  
   $sql="INSERT INTO `images`( `Image_Name`, `Image_Description`, `Image_Type`) VALUES (?,?,?)";
   $stmt=$this->connect()->prepare($sql);
   $stmt->execute([$this->Image_Name,$this->Image_Description,$this->Image_Type]);

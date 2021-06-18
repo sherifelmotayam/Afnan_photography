@@ -16,7 +16,7 @@
 	<div class="pack">	
 	<div class="col">
 	<div class="title"><h2>Weeding</h2></div>
-	<img src="3.jpeg">
+	<img src="packphotos/3.jpeg">
 	<div class="content">
 		
 		<ul>
@@ -64,7 +64,7 @@
 
 <div class="col">
 	<div class="title"><h2>Engagment</h2></div>
-	<img src="1.jpeg">
+	<img src="packphotos/1.jpeg">
 	<div class="content">
 		
 		<ul>
@@ -109,7 +109,7 @@
 </div>
 	<div class="col">
 	<div class="title"><h2>Casual</h2></div>
-	<img src="2.jpeg">
+	<img src="packphotos/2.jpeg">
 	<div class="content">
 		<ul>
 			
@@ -153,7 +153,7 @@
 </div>
 	<div class="col">
 	<div class="title"><h2 id="other">Other</h2></div>
-	<img src="4.jpeg">
+	<img src="packphotos/4.jpeg">
 	<div class="content">
 		<ul>
 			

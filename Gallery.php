@@ -13,7 +13,7 @@ include 'Main_Nav.php';
 <body>
 <h1 class="tit"> Gallery </h1>
     <?php
-   $gallery=new gallery();
+   $gallery=new gallery("ImageGallery","NameGallery","IDAlbum");
    $array=$gallery->viewgallery($_GET['id']);
    foreach ($array as $data)
     {

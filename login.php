@@ -1,33 +1,9 @@
 <?php 
+declare(strict_types=1 );
+include 'includes/class-autoloaded.php';
 include 'Main_Nav.php';
-require_once('database_Connect.php');
-class Login extends dbConnect
-{
-	public $user;
-	public $pass;
-	public function checker($user,$pass)
-	{
-		$this->user=$user;
-		$this->pass=$pass;
-		$sql="select Username , Password from `admin` where user='$Username' and pass='$Password'";
-       	$s=$this->connect()->query($sql);
-		if($user==$row["Username"]&&$pass==$row["Password"])
-		{
-				
-		}
-		else
-		{
-			echo "Uncorrect UserName or Password";
-			echo "$user";
-			echo "<br>";
-			echo "$pass";
-		}
-
-	}
-}
 
 ?>
-
 <html>
     <head>
           <link rel="stylesheet" type="text/css" href="login.css">
@@ -44,6 +20,13 @@ class Login extends dbConnect
 </form>
 </html>
 <?php
-$check=new login();
-$check->checker($_POST['username'],$_POST['pass']);
+
+if(isset($_POST['Login']))
+{
+
+	$admin=new admin(); 
+	$admin->login($_POST['username'],$_POST['pass']);
+
+}
+
 ?>
