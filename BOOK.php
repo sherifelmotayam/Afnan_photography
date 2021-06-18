@@ -25,8 +25,11 @@ include 'includes/class-autoloaded.php';
     <script src="https://smtpjs.com/v3/smtp.js"></script>
   
   <script type="text/javascript">
+  public var testw;
+  function test(form){
+   testw =form.fn.value;
+  }
     function sendEmail() {
-
       Email.send({
         Host: "smtp.gmail.com",
         Username: "test1815007@gmail.com",
@@ -34,18 +37,11 @@ include 'includes/class-autoloaded.php';
         To:"ahmed1815007@miuegypt.edu.eg",
         From: "test1815007@gmail.com",
         Subject: "New Reservation",
-        Body:  "A new session has been booked, check out the details here:",
+        Body:  testw,
 
       })
     }
   </script>
-
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" 
-        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" 
-        crossorigin="anonymous">
-</script>
-<script src="js/jquery.ccpicker.js"> $("#phone").CcPicker(); </script>
-<link rel="stylesheet" href="css/jquery.ccpicker.css">
 
 
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -100,7 +96,7 @@ include 'includes/class-autoloaded.php';
 
           <div class="input-box">
             <span class="details">phone</span>
-            <input type="text" placeholder="Enter your phone number" id="phone" name="phone" value="<?php if (isset($_POST["phone"])){ echo $_POST["phone"];}?>" >
+            <input type="text" placeholder="Enter your phone number" name="phone" value="<?php if (isset($_POST["phone"])){ echo $_POST["phone"];}?>" >
           </div>
 
 
@@ -112,7 +108,7 @@ include 'includes/class-autoloaded.php';
             <span class="details">Question</span>
             <input list="Questions"   placeholder="Enter session location" name="question" autocomplete="off"  value="<?php if (isset($_POST["question"])){ echo $_POST["question"];}?>" >
             <datalist id="Questions"> 
-            <?php $city=new UserValidation(); $city->displayQuestions()?>
+            <?php $qu=new UserValidation(); $qu->displayQuestions()?>
             </datalist>
           </div>
           <div class="input-box">
@@ -122,7 +118,7 @@ include 'includes/class-autoloaded.php';
           
         </div>
         <div class="button">
-          <input type="submit" name= "ahmed"  value="Book">
+          <input type="button" name= "ahmed"  value="Book" onClick="test(this.form)">
         </div>
 
 
@@ -139,10 +135,11 @@ include 'includes/class-autoloaded.php';
 $test= new UserValidation();
 if (isset($_POST['ahmed'])) 
 {
-#echo "<script> sendEmail() </script>"; 
+  echo "<script> sendEmail() </script>"; 
   $test->setData($_POST['fn'],$_POST['ln'],$_POST['phone'],$_POST['loc'],$_POST['package'],$_POST['date'],$_POST['time'],$_POST['Comment'],$_POST['question'],$_POST['qanswer']);
   $test->checkdate();
   $test->check_validation();
+
 }
 
 
