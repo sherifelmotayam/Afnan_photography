@@ -100,17 +100,7 @@ include 'includes/class-autoloaded.php';
             <span class="details">Description & comments</span>
             <input type="text" placeholder="Description & comments" name="Comment" value="<?php if (isset($_POST["Comment"])){ echo $_POST["Comment"];}?>">
           </div>
-          <div class="input-box">
-            <span class="details">Question</span>
-            <input list="Questions"   placeholder="Enter session location" name="question" autocomplete="off"  value="<?php if (isset($_POST["question"])){ echo $_POST["question"];}?>" >
-            <datalist id="Questions"> 
-            <?php $qu=new UserValidation(); $qu->displayQuestions()?>
-            </datalist>
-          </div>
-          <div class="input-box">
-            <span class="details">Answer</span>
-            <input type="text" placeholder="Enter your answer" name="qanswer" value="<?php if (isset($_POST["qanswer"])){ echo $_POST["qanswer"];}?>" >
-          </div>
+
           
         </div>
         <div class="button">
@@ -132,10 +122,11 @@ $test= new UserValidation();
 if (isset($_POST['ahmed'])) 
 {
 
-  $test->setData($_POST['fn'],$_POST['ln'],$_POST['phone'],$_POST['loc'],$_POST['package'],$_POST['date'],$_POST['time'],$_POST['Comment'],$_POST['question'],$_POST['qanswer']);
-  $test->check_validation();
+  $test->setData($_POST['fn'],$_POST['ln'],$_POST['phone'],$_POST['loc'],$_POST['package'],$_POST['date'],$_POST['time'],$_POST['Comment']);
   $test->checkdate();
-  echo   "<script type='text/javascript'>sendEmail();</script>";
+  $test->check_validation();
+  
+  //echo   "<script type='text/javascript'>sendEmail();</script>";
 }
 
 

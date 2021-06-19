@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 include 'class-autoloaded.php';
+include 'Main_Nav.php';
  ?>
 <!DOCTYPE html>
 <html>
@@ -13,7 +14,7 @@ include 'class-autoloaded.php';
 
 <body>
   <?php
-    $images=new images();
+    $images=new images('data','data','data');
     $getdata=$images->readimages($_GET['id']);
     foreach ($getdata as $data)
      {

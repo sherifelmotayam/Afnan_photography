@@ -10,12 +10,11 @@ class UserValidation extends conn
     private $phone;
     private $comment;
     private $time;
-    private $question;
-    private $answer;
+
     public $check=false;
 
 
-    public function setData($fn,$ln,$phone,$loc,$package,$date,$time,$comment,$question,$answer){
+    public function setData($fn,$ln,$phone,$loc,$package,$date,$time,$comment){
       $this->fn=$fn;
       $this->ln=$ln;
       $this->phone=$phone;
@@ -23,8 +22,6 @@ class UserValidation extends conn
       $this->package=$package; 
       $this->date=$date;
       $this->time=$time;
-      $this->question=$question;
-      $this->answer=$answer;
       $this->comment=$comment;
     }
     public function getFirstName(){return $this->fn;}
@@ -35,8 +32,7 @@ class UserValidation extends conn
     public function getTime(){return $this->time;}
     public function getComment(){return $this->comment;}  
     public function getPackage(){return $this->package;}
-    public function getQuestion(){return $this->question;}
-    public function getAnswer(){return $this->answer;}  
+
 
 
   function check_validation()
@@ -65,7 +61,7 @@ class UserValidation extends conn
       echo '<script type="text/JavaScript">swal("Sorry!", "invalid location","error");</script>';
     }
     else{
-        $sql="INSERT INTO `booking`(`FirstName`, `LastName`, `City` ,`Package`, `Date`,`time`,`Phone`, `Comment`,`questions,`answers`) VALUES('$this->getFirstName()','$this->getLastName()', '$this->getLocation()' , '$this->getDate()','$this->getPackage','$this->getTime()','$this->getPhone()','$this->getComment()','$this->getQuestion()','$this->getAnswer()')";
+        $sql="INSERT INTO `booking`(`FirstName`, `LastName`, `City` ,`Package`, `Date`,`time`,`Phone`, `Comment`) VALUES('$this->fn','$this->ln', '$this->loc' , '$this->package','$this->date','$this->time','$this->phone','$this->Comment')";
 
             $s=$this->connect()->prepare($sql);
             //To avoid The sql injection
@@ -82,7 +78,7 @@ class UserValidation extends conn
   function checkdate()
   {
     $n=new conn();
-    $sql = "SELECT `Date` FROM booking WHERE `Date` = '".$this->getDate()."'";
+    $sql = "SELECT `Date` FROM booking WHERE `Date` = '".$this->date."'";
     $stmt=$n->connect()->query($sql);
     
     if($stmt->rowCount())
@@ -96,22 +92,7 @@ class UserValidation extends conn
     }
 }
 
-function checkQandA()
-{
-  $n=new conn();
-  $sql = "SELECT `Date` FROM booking WHERE `Date` = '".$this->getDate()."'";
-  $stmt=$n->connect()->query($sql);
-  
-  if($stmt->rowCount())
-  {
-     echo '<script type="text/JavaScript"> 
-   swal("Sorry!", "this date already received", "error");
-   </script>';
-    exit();
 
-
-  }
-}
 
 public function displayCity()
 {
@@ -136,16 +117,6 @@ public function displayPackage()
 }
 
 
-public function displayQuestions()
-{
-    $sql = "SELECT DISTINCT question FROM `question`";
-    $stmt=$this->connect()->query($sql);
-    while($row=$stmt->fetch())
-    {
-      echo '<option value="'.$row['question'].'">'.$row['question'].'</option>' ;
-      echo $row['question'];
-    }   
-}
 
 
 
