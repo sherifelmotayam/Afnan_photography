@@ -53,11 +53,11 @@
                 $email=$_POST['Eml'];
                 $password=$_POST['Pass'];
                 $phonenumber=$_POST['Pumber'];
-                if(preg_match("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$^", $firstname) == 0)
+                if(preg_match("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z])$^", $firstname) == 0)
                     {
                        $_SESSION['errmsg'] = "First Name should be characters only!";
                     }
-                if(preg_match("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$^", $lastname) == 0)
+                if(preg_match("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z])$^", $lastname) == 0)
                     {
                        $_SESSION['errmsg'] = "Last Name should be characters only!";
                      }

@@ -10,6 +10,7 @@ class UserValidation extends conn
     private $phone;
     private $comment;
     private $time;
+
     public $check=false;
 
 
@@ -30,7 +31,8 @@ class UserValidation extends conn
     public function getDate(){return $this->date;}
     public function getTime(){return $this->time;}
     public function getComment(){return $this->comment;}  
-    public function getPackage(){return $this->package;}  
+    public function getPackage(){return $this->package;}
+
 
 
   function check_validation()
@@ -59,7 +61,7 @@ class UserValidation extends conn
       echo '<script type="text/JavaScript">swal("Sorry!", "invalid location","error");</script>';
     }
     else{
-        $sql="INSERT INTO `booking`(`FirstName`, `LastName`, `City` ,`Package`, `Date`,`time`,`Phone`, `Comment`) VALUES('$this->getFirstName()','$this->getLastName()', '$this->getLocation()' , '$this->getDate()','$this->getPackage','$this->getTime()','$this->getPhone()','$this->getComment')";
+        $sql="INSERT INTO `booking`(`FirstName`, `LastName`, `City` ,`Package`, `Date`,`time`,`Phone`, `Comment`) VALUES('$this->fn','$this->ln', '$this->loc' , '$this->package','$this->date','$this->time','$this->phone','$this->Comment')";
 
             $s=$this->connect()->prepare($sql);
             //To avoid The sql injection
@@ -76,7 +78,7 @@ class UserValidation extends conn
   function checkdate()
   {
     $n=new conn();
-    $sql = "SELECT `Date` FROM booking WHERE `Date` = '".$this->getDate()."'";
+    $sql = "SELECT `Date` FROM booking WHERE `Date` = '".$this->date."'";
     $stmt=$n->connect()->query($sql);
     
     if($stmt->rowCount())
@@ -89,6 +91,8 @@ class UserValidation extends conn
   
     }
 }
+
+
 
 public function displayCity()
 {
@@ -113,16 +117,6 @@ public function displayPackage()
 }
 
 
-public function displayQuestions()
-{
-    $sql = "SELECT DISTINCT questions FROM `questions`";
-    $stmt=$this->connect()->query($sql);
-    while($row=$stmt->fetch())
-    {
-      echo '<option value="'.$row['questions'].'">'.$row['questions'].'</option>' ;
-      echo $row['questions'];
-    }   
-}
 
 
 
@@ -137,7 +131,6 @@ package type is: $package
 Description & comments: $Comment
 EOD;
 return $body;
-
 }
 
 

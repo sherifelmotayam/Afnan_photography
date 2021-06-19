@@ -25,19 +25,17 @@ include 'includes/class-autoloaded.php';
     <script src="https://smtpjs.com/v3/smtp.js"></script>
   
   <script type="text/javascript">
+  var ss= document.getElementById('fn').value;
     function sendEmail() {
-      var fn=document.getElementsByName("fn").value;
       Email.send({
         Host: "smtp.gmail.com",
         Username: "test1815007@gmail.com",
         Password: "123.asdf",
         To:"ahmed1815007@miuegypt.edu.eg",
         From: "test1815007@gmail.com",
-        Subject: "new reservation",
-        Body:  fn,
-
+        Subject: "New Reservation",
+        Body: "A new session has been booked, check out the details here:" ,
       })
-        .then(function (message) {alert("mail sent successfully")});
     }
   </script>
 
@@ -61,14 +59,19 @@ include 'includes/class-autoloaded.php';
             <span class="details">Last name</span>
             <input type="text" placeholder="Enter your last name" name="ln" value="<?php if (isset($_POST["ln"])){ echo $_POST["ln"];}?>" >
           </div>
+
           <div class="input-box">
-            <span class="details">phone</span>
-            <input type="text" placeholder="Enter your phone number" name="phone" value="<?php if (isset($_POST["phone"])){ echo $_POST["phone"];}?>" >
+            <span class="details">Package Type</span>
+                <input list="Package" name="package" placeholder="Select your package">
+                <datalist id="Package">
+                <?php $package=new UserValidation(); $package->displayPackage();?>
+                </datalist>
           </div>
+
 
           <div class="input-box">
             <span class="details">Location</span>
-            <input list="City"   placeholder="Enter session location" name="loc" autocomplete="off"  value="<?php if (isset($_POST["location"])){ echo $_POST["location"];}?>" >
+            <input list="City"   placeholder="Enter session location" name="loc" autocomplete="off"  value="<?php if (isset($_POST["loc"])){ echo $_POST["loc"];}?>" >
             <datalist id="City"> 
             <?php $city=new UserValidation(); $city->displayCity()?>
             </datalist>
@@ -76,7 +79,7 @@ include 'includes/class-autoloaded.php';
 
           <div class="input-box">
             <span class="details">Session Date</span>
-            <input autocomplete="off" type="text" id="txtdate" placeholder="MM--DD--YYYY" name="date" value="<?php if (isset($_POST["date"])){ echo $_POST["date"];}?>"  required>
+            <input autocomplete="off" type="text" id="txtdate" placeholder="MM--DD--YYYY" name="date" value="<?php if (isset($_POST["date"])){ echo $_POST["date"];}?>"  >
 
           </div>
 
@@ -88,33 +91,20 @@ include 'includes/class-autoloaded.php';
 
 
           <div class="input-box">
-            <span class="details">Package Type</span>
-                <input list="Package" name="package">
-                <datalist id="Package">
-                <?php $package=new UserValidation(); $package->displayPackage();?>
-                </datalist>
+            <span class="details">phone</span>
+            <input type="text" placeholder="Enter your phone number" name="phone" value="<?php if (isset($_POST["phone"])){ echo $_POST["phone"];}?>" >
           </div>
 
 
           <div class="input-box">
             <span class="details">Description & comments</span>
-            <input type="text" placeholder="Description & comments" name="Comment" value="<?php if (isset($_POST["Comment"])){ echo $_POST["Comment"];}?>" required>
+            <input type="text" placeholder="Description & comments" name="Comment" value="<?php if (isset($_POST["Comment"])){ echo $_POST["Comment"];}?>">
           </div>
-          <div class="input-box">
-            <span class="details">Question</span>
-            <input list="Questions"   placeholder="Enter session location" name="question" autocomplete="off"  value="<?php if (isset($_POST["location"])){ echo $_POST["location"];}?>" >
-            <datalist id="Questions"> 
-            <?php $city=new UserValidation(); $city->displayQuestions()?>
-            </datalist>
-          </div>
-          <div class="input-box">
-            <span class="details">Answer</span>
-            <input type="text" placeholder="Enter your answer" name="qanswer" value="<?php if (isset($_POST["phone"])){ echo $_POST["phone"];}?>" >
-          </div>
+
           
         </div>
         <div class="button">
-          <input type="submit" name= "ahmed"  value="Book">
+          <input type="submit" name= "ahmed"  value="Book" >
         </div>
 
 
@@ -132,12 +122,11 @@ $test= new UserValidation();
 if (isset($_POST['ahmed'])) 
 {
 
-
   $test->setData($_POST['fn'],$_POST['ln'],$_POST['phone'],$_POST['loc'],$_POST['package'],$_POST['date'],$_POST['time'],$_POST['Comment']);
   $test->checkdate();
   $test->check_validation();
-
-
+  
+  //echo   "<script type='text/javascript'>sendEmail();</script>";
 }
 
 

@@ -47,13 +47,6 @@ public function album()
  return $array;
   }
 
-
-
 }
-
-
-
-
-
 
  ?>
