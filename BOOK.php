@@ -25,10 +25,7 @@ include 'includes/class-autoloaded.php';
     <script src="https://smtpjs.com/v3/smtp.js"></script>
   
   <script type="text/javascript">
-  public var testw;
-  function test(form){
-   testw =form.fn.value;
-  }
+  var ss= document.getElementById('fn').value;
     function sendEmail() {
       Email.send({
         Host: "smtp.gmail.com",
@@ -37,8 +34,7 @@ include 'includes/class-autoloaded.php';
         To:"ahmed1815007@miuegypt.edu.eg",
         From: "test1815007@gmail.com",
         Subject: "New Reservation",
-        Body:  testw,
-
+        Body: "A new session has been booked, check out the details here:" ,
       })
     }
   </script>
@@ -83,7 +79,7 @@ include 'includes/class-autoloaded.php';
 
           <div class="input-box">
             <span class="details">Session Date</span>
-            <input autocomplete="off" type="text" id="txtdate" placeholder="MM--DD--YYYY" name="date" value="<?php if (isset($_POST["date"])){ echo $_POST["date"];}?>"  required>
+            <input autocomplete="off" type="text" id="txtdate" placeholder="MM--DD--YYYY" name="date" value="<?php if (isset($_POST["date"])){ echo $_POST["date"];}?>"  >
 
           </div>
 
@@ -102,7 +98,7 @@ include 'includes/class-autoloaded.php';
 
           <div class="input-box">
             <span class="details">Description & comments</span>
-            <input type="text" placeholder="Description & comments" name="Comment" value="<?php if (isset($_POST["Comment"])){ echo $_POST["Comment"];}?>" required>
+            <input type="text" placeholder="Description & comments" name="Comment" value="<?php if (isset($_POST["Comment"])){ echo $_POST["Comment"];}?>">
           </div>
           <div class="input-box">
             <span class="details">Question</span>
@@ -118,7 +114,7 @@ include 'includes/class-autoloaded.php';
           
         </div>
         <div class="button">
-          <input type="button" name= "ahmed"  value="Book" onClick="test(this.form)">
+          <input type="submit" name= "ahmed"  value="Book" >
         </div>
 
 
@@ -135,11 +131,11 @@ include 'includes/class-autoloaded.php';
 $test= new UserValidation();
 if (isset($_POST['ahmed'])) 
 {
-  echo "<script> sendEmail() </script>"; 
-  $test->setData($_POST['fn'],$_POST['ln'],$_POST['phone'],$_POST['loc'],$_POST['package'],$_POST['date'],$_POST['time'],$_POST['Comment'],$_POST['question'],$_POST['qanswer']);
-  $test->checkdate();
-  $test->check_validation();
 
+  $test->setData($_POST['fn'],$_POST['ln'],$_POST['phone'],$_POST['loc'],$_POST['package'],$_POST['date'],$_POST['time'],$_POST['Comment'],$_POST['question'],$_POST['qanswer']);
+  $test->check_validation();
+  $test->checkdate();
+  echo   "<script type='text/javascript'>sendEmail();</script>";
 }
 
 
