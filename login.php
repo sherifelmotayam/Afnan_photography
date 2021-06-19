@@ -1,7 +1,8 @@
 <?php 
 declare(strict_types=1 );
+session_start();
 include 'includes/class-autoloaded.php';
-include 'Main_Nav.php';
+//include 'Main_Nav.php';
 
 ?>
 <html>
@@ -24,8 +25,20 @@ include 'Main_Nav.php';
 if(isset($_POST['Login']))
 {
 
-	$admin=new admin(); 
-	$admin->login($_POST['username'],$_POST['pass']);
+	$admin=new Admin("","","","","","",""); 
+	if($admin->login($_POST['username'],$_POST['pass'])==true)
+	{
+	
+
+		
+
+	header('location: View%20Profile.php');
+	}
+	else {
+		
+		print "<script>alert ('Sorry man try again') </script>";
+
+	}
 
 }
 

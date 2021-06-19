@@ -1,10 +1,10 @@
 <?php
   declare(strict_types=1 );
+  session_start();
   include 'includes/class-autoloaded.php';
   include "Admin.php";
-  $id=14;
   $Admin=new Admin();
-  $Admin->viewprofile($id);
+  $Admin->viewprofile($_SESSION['user_session']);
   $image=$Admin->getimage();
   $fname=$Admin->getfirstname();
   $lname=$Admin->getlastname();
@@ -20,6 +20,10 @@
     <link rel = "stylesheet" href = "View Profile.css">
   </head>
   <body>
+  <?php
+
+
+  ?>
     <h1 style = 'color:red'>View Profle123</h1>
     <div class="profile" style = 'height: 620px;margin-right:250px; margin-top: 20px;'>
   	  <form action="View Profile.php" method="post" enctype="multipart/form-data">
