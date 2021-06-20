@@ -34,33 +34,24 @@ class Admin extends conn
   }
 
 
-  public function login($Username,$pass)
+  public function login($username,$password)
   {
-     try
-     {
-        $stmt = $this->connect()->prepare("SELECT `ID`,`Username`, `Password`, `Image` FROM `admin` WHERE `Username`=:Username AND `Password`=:pass");
-        $stmt->execute(array(':Username'=>$Username, ':pass'=>$pass));
-        $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-        if($stmt->rowCount() > 0)
-        {
-          $_SESSION['user_session'] = $userRow['ID'];
-
-         //echo "username= ".$_SESSION['user_session'];
-         return true;
-
-        }
-        else {
-          return false;
-
-        }
-       
-     }
-     catch(PDOException $e)
-     {
-      echo $e->getMessage();
-
-     }
- }
+  
+    $this->username=$username;
+    $this->password=$password;
+    $sql="SELECT `Username`, `Password`, `Image` FROM `admin` WHERE  `Username`='$username' and `Password`='$password'";
+      $stmt=$this->connect()->prepare($sql);
+      if($stmt->execute([$this->username,$this->password,$this->image,$this->phonenumber]))
+      {
+        print "<script>alert ('data inserted ') </script>";
+        header('addalbum.php');
+      }
+      else
+      {
+        print "<script>alert ('data not inserted ') </script>";
+        header('addGallery.php');
+      }
+    }
 
   public function AddAdmin()
   {
