@@ -7,6 +7,7 @@ if(isset($_POST['insert']))
 {
     $t=new Packages();
     $t->displayPackages($_POST['city'],$_POST['Pack']);
+    $p=" EGP";
 }
 ?>
 
@@ -21,13 +22,13 @@ if(isset($_POST['insert']))
 <body>
   
 <form action ="Pack.php" method="POST">
-<label>Select City</label>
-    <input list="City" name="city" style="margin-top: 150px;">
+<label style="position: absolute; top: 150px; left: 240px; font-size: 20px;">Select City</label>
+    <input list="City" name="city" style="width:205px;" placeholder="Select Your City">
         <datalist id="City">
             <h2><?php $na=new Packages(); $na->ListOfCity();?></h2>
         </datalist>
-        <lable>Select Type of Session</lable>
-    <input list="Packages" name="Pack" style="margin-top: 150px;">
+        <label style="position: absolute; top: 150px; left: 600px; font-size: 20px;">Select Type of Event</label>
+    <input list="Packages" name="Pack" style="margin-top: 150px;width:280px;margin-left: 240px;" placeholder="Select Event you want">
         <datalist id="Packages">
             <?php $n=new Packages(); $n->ListOfPack();?>
         </datalist>
@@ -37,14 +38,17 @@ if(isset($_POST['insert']))
 
     <div class="pack">
     <div class="col">
-        <div class="title"><h2><?php print $t->Event;?></h2></div>
+        <div class="title" style="margin-left:650px;"><h2><?php print $t->Event;?></h2></div>
     <img src="packphotos/3.jpeg">
-    <div class="content">
+    <img src="packphotos/2.jpeg">
+     <img src="packphotos/1.jpeg">
+    <img src="packphotos/4.jpeg">
+    <div class="content" style="width:1620px;">
         <ul>
             <li>
                 <div class="dropdown">
                     <p><?php print $t->city; ?></p>
-                     <p><?php print $t->price; ?></p>
+                     <p><?php print $t->price.$p; ?> </p>
                         <p><?php print $t->desc; ?></p>
                 </div>
             </li>
@@ -79,147 +83,6 @@ if(isset($_POST['insert']))
             <a class ="glow" href="BOOK.php">Book now</a>
         </div>
 
-        
-    </div>
-    </div>
-
-<div class="col">
-    <div class="title"><h2>Engagment</h2></div>
-    <img src="packphotos/1.jpeg">
-    <div class="content">
-        
-        <ul>
-            
-            <li>
-                <div class="dropdown">
-                    <span>Cairo</span>
-                    <div class="dropdown-content">
-                        <p>Start from 1000EG to 3000EG</p>
-                    </div>
-                </div>
-            </li>
-            <li>        
-                <div class="dropdown">
-                    <span>ismailia</span>
-                    <div class="dropdown-content">
-                        <p>Start from 1000EG to 3000EG</p>
-                    </div>
-                </div>
-            </li>
-            <li>        
-                <div class="dropdown">
-                    <span>zagazig</span>
-                    <div class="dropdown-content">
-                        <p>Start from 1000EG to 3000EG</p>
-                    </div>
-                </div>
-            </li>
-            <li>        
-                <div class="dropdown">
-                    <span>Alex</span>
-                    <div class="dropdown-content">
-                        <p>Start from 1000EG to 3000EG</p>
-                    </div>
-                </div>
-            </li>
-
-        </ul>
-            <div class="triangle-up"></div>
-        <div class ="btn">
-            <a class ="glow" href="BOOK.php">Book now</a>
-        </div>
-    </div>
-</div>
-    <div class="col">
-    <div class="title"><h2>Casual</h2></div>
-    <img src="packphotos/2.jpeg">
-    <div class="content">
-        <ul>
-            
-            <li>
-                <div class="dropdown">
-                    <span>Alex</span>
-                    <div class="dropdown-content">
-                        <p>Start from 1000EG to 3000EG</p>
-                    </div>
-                </div>
-            </li>
-            <li>        
-                <div class="dropdown">
-                    <span>ismailia</span>
-                    <div class="dropdown-content">
-                        <p>Start from 1000EG to 3000EG</p>
-                    </div>
-                </div>
-            </li>
-            <li>        
-                <div class="dropdown">
-                    <span>zagazig</span>
-                    <div class="dropdown-content">
-                        <p>Start from 1000EG to 3000EG</p>
-                    </div>
-                </div>
-            </li>
-            <li>        
-                <div class="dropdown">
-                    <span>Alex</span>
-                    <div class="dropdown-content">
-                        <p>Start from 1000EG to 3000EG</p>
-                    </div>
-                </div>
-            </li>
-
-        </ul>
-        <div class="triangle-up"></div>
-        <div class ="btn">
-            <a class ="glow" href="BOOK.php">Book now</a>
-        </div>
-    </div>
-</div>
-    <div class="col">
-    <div class="title"><h2 id="other">Other</h2></div>
-    <img src="packphotos/4.jpeg">
-    <div class="content">
-        <ul>
-            
-            <li>
-                <div class="dropdown">
-                    <span>Cairo</span>
-                    <div class="dropdown-content">
-                        <p>Start from 1000EG to 3000EG</p>
-                    </div>
-                </div>
-            </li>
-            <li>        
-                <div class="dropdown">
-                    <span>ismailia</span>
-                    <div class="dropdown-content">
-                        <p>Start from 1000EG to 3000EG</p>
-                    </div>
-                </div>
-            </li>
-            <li>        
-                <div class="dropdown">
-                    <span>zagazig</span>
-                    <div class="dropdown-content">
-                        <p>Start from 1000EG to 3000EG</p>
-                    </div>
-                </div>
-            </li>
-            <li>        
-                <div class="dropdown">
-                    <span>Alex</span>
-                    <div class="dropdown-content">
-                        <p>Start from 1000EG to 3000EG</p>
-                    </div>
-                </div>
-            </li>
-
-        </ul>
-        <div class="triangle-up"></div> 
-        <div class ="btn">
-            <a class ="glow" href="BOOK.php">Book now</a>
-        </div>
         
     </div>
     </div>

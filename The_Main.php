@@ -10,21 +10,21 @@
 
 <div class="mySlides fade">
   <img src="Images/e3.jpg" style="width:100%">
-  <div class="text"><a href="Engagments.php" id="Engagment">Engagment</a></div>
+  <div class="text"><a href="Gallery.php?id=18" id="Engagment">Engagment</a></div>
 </div>
 
 <div class="mySlides fade">
    <img src="Images/e1.jpg" style="width:100%">
-   <div class="text"><a href="Weedings.php" id="Weeding"> Weeding</a></div>
+   <div class="text"><a href="Gallery.php?id=17" id="Weeding"> Wedding</a></div>
 </div>
 
 <div class="mySlides fade">
-   <img src="Images/9.jpg" style="width:100%">
-   <div class="text"><a href="Casual.php" id="Casual">     Casual</a></div>
+   <img src="Images/casual.jpeg" style="width:100%">
+   <div class="text"><a href="Gallery.php?id=21" id="Casual">Casual</a></div>
 </div>
 <div class="mySlides fade">
-   <img src="Images/pic1.jpg" style="width:100%">
-   <div class="text"><a href="Other.php" id="Others">  Others</a></div>
+   <img src="Images/other.jpeg" style="width:100%">
+   <div class="text"><a href="Gallery.php?id=22" id="Others"> Others </a></div>
 </div>
 </div>
 <br>

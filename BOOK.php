@@ -31,7 +31,7 @@ include 'includes/class-autoloaded.php';
         Host: "smtp.gmail.com",
         Username: "test1815007@gmail.com",
         Password: "123.asdf",
-        To:"ahmed1815007@miuegypt.edu.eg",
+        To:"yomna.ibrahim@miuegypt.edu.eg",
         From: "test1815007@gmail.com",
         Subject: "New Reservation",
         Body: "A new session has been booked, check out the details here:" ,
@@ -127,7 +127,7 @@ if (isset($_POST['ahmed']))
   $test->check_validation();
 
   
-  //echo   "<script type='text/javascript'>sendEmail();</script>";
+  echo   "<script type='text/javascript'>sendEmail();</script>";
 }
 
 

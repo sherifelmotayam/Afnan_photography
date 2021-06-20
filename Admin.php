@@ -1,4 +1,3 @@
-
 <html >
 <head>
 	<link rel="stylesheet" type="text/css" href="Admin.css">
@@ -13,11 +12,14 @@
 			<i class="fas fa-bars" id="sidebar_btn"></i>
 		</label>
         <div>
-     
+        <center>
+		
+
+  		</center>
         </div>
 		<div class="right_area" style = 'margin-top: -15px;'>
-
-
+     
+            
             <div class ="logout">
           <a href="" class="fas fa-sign-out-alt" style = "margin-top:-100px;">Logout</a>
             </div>
@@ -26,19 +28,23 @@
 	</header>
 	<div class="sidebar" style = 'margin-top: 0px;'>
 		<a href="AddAdmin.php"><i class="fas fa-plus-circle"></i><span>Add Admin</span></a>
-        <a href="View%20Profile.php"><i class="fas fa-cog"></i><span>Edit Profile</span></a>
-
-        <a href="addAlbum.php"><i class="fas fa-plus-circle"></i><span>Add Album</span></a>
-        <a href="AddGallery.php"><i class="fas fa-plus-circle"></i><span>Add Gallery</span></a>
+        <a href=""><i class="fas fa-edit"></i><span>Edit HomePage</span></a>
+        <a href="View%20Profile.php"><i class="fas fa-cog"></i><span>Edit Profile</span></a> 
+        <a href="ShowBook.php"><i class="far fa-eye"></i><span>Show Booking</span></a>
+        <a href="addalbum.php"><i class="fas fa-plus-circle"></i><span>Add Album</span></a>
+        <a href="ShowAlbums.php"><i class="far fa-eye"></i><span>Show Albums</span></a>
+        <a href="addGallery.php"><i class="fas fa-plus-circle"></i><span>Add Gallery</span></a>
+        <a href="ShowGallery.php"><i class="far fa-eye"></i><span>Show Gallery</span></a>
         <a href="addImages.php"><i class="fas fa-plus-circle"></i><span>Add Images</span></a>
+        <a href="ShowImages.php"><i class="far fa-eye"></i><span>Show Images</span></a>
 
           <a href=""><i class="fas fa-sign-out-alt"></i><span>Reservations</span></a>
 		<a href="stat2.php"><i class="fas fa-chart-bar"></i><span>Statistics</span></a>
 
-        <a href=""><i class="fas fa-sign-out-alt"></i><span>log out</span></a>
-
-
-
+        <a href="The_Main.php"><i class="fas fa-sign-out-alt"></i><span>log out</span></a>
+        
+                
+    
 	</div>
 
 </body>

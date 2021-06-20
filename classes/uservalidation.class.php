@@ -127,21 +127,121 @@ public function displayPackage()
 
 
 
-
-public function sendbody(){
-$body=<<<EOD
-you have a new resevaition and it's details
-name is: $fn $ln
-date is: $date at time: $time
-location is: $loc
-phone is: $phone
-package type is: $package
-Description & comments: $Comment
-EOD;
-return $body;
+public function edit()
+    {
+        /*if there is no word id= will show this message or redirect 
+        to another page*/
+        if(!isset($_GET['id']))
+        {
+            die('ID isn"t valid');
+        }
+        else
+        {
+            $id= $_GET['id'];
+            $sql="SELECT * FROM `booking` WHERE `ID`=$id";
+            $result=$this->connect()->query($sql);
+            //this mean that the id can't be dublicated
+            if($result->rowCount() == 0)
+            {
+                die('ID isnot found in the database');
+            }
+            while($data=$result->fetch())
+            {
+                $this->ID= $data['ID'];
+                $this->fn= $data['FirstName'];
+                $this->ln =$data['LastName'];
+                $this->city= $data['City'];
+                $this->date= $data['Date'];
+                $this->time =$data['Time'];
+                $this->comment =$data['Comment'];
+                $this->package =$data['Package'];
+                $this->phone =$data['Phone'];
+            }
+        }           
+    }
+    public function getID()
+    {
+        return $this->ID;
+    }
+    public function getCity()
+    {
+        return $this->city;
+    }
+    public function display()
+    {
+        $sql="SELECT * FROM `booking`";
+        $stmt=$this->connect()->query($sql);
+        while($row=$stmt->fetch())
+        {
+          print "<tr>";
+          print "<td style = 'text-align: center; font-size:20px; border:1px solid black;'>".$row['ID']."</td>";
+          print "<td style = 'text-align: center; font-size:20px; border:1px solid black;'>".$row['FirstName']." ".$row['LastName']."</td>";
+          print "<td style = 'text-align: center; font-size:20px; border:1px solid black;'>".$row['Date']."</td>";
+          print "<td style = 'text-align: center; font-size:20px; border:1px solid black;'>".$row['Time']."</td>";
+          print "<td style = 'text-align: center; font-size:20px; border:1px solid black;'>".$row['City']."</td>";
+          print "<td style = 'text-align: center; font-size:20px; border:1px solid black;'>".$row['Package']."</td>";
+          print "<td style = 'text-align: center; font-size:20px; border:1px solid black;'>".$row['Phone']."</td>";
+          print "<td style = 'text-align: center; font-size:20px; border:1px solid black;'>".$row['Comment']."</td>";
+          print "<td>";
+          print "<div class='btn-group'>";
+          print "<a class='btn btn-warning' href='EditBook.php?id=".$row['ID']."'>Edit</a>";
+          print "<a class='btn btn-danger' onclick=\"javascript:return confirm('Are you sure you want to delete this?');\"href='DeleteBook.php?id=".$row['ID']."'>Delete</a> ";
+          print "<div>";
+          print "</td>";
+          print "</tr>";
+        }
+    }
+    public function editData()
+        {
+            if(isset($_POST['submit']))
+            {
+                $id=$_POST['ID'];
+                $fn=$_POST['FirstName'];
+                $ln=$_POST['LastName'];
+                $city=$_POST['City'];
+                $date=$_POST['Date'];
+                $time=$_POST['Time'];
+                $comment=$_POST['Comment'];
+                $phone=$_POST['Phone'];
+                $package=$_POST['Package'];
+                $sql="UPDATE `booking`  SET `FirstName` ='$fn' ,`LastName` = '$ln',`Date` = '$date',`Time` = '$time',`City` = '$city',`Package`='$package' , `Phone`= '$phone' , `Comment`='$comment' WHERE `ID`=$id";
+                $stmt=$this->connect()->prepare($sql);
+                if($stmt->execute())
+                {
+                    echo 'Updated Successfully';
+                    header('Location:ShowBook.php');
+                }
+                else
+                {
+                    echo 'Updated Failed';
+                }
+                
+            }
+        }
+    public function delete()
+    {
+        if(isset($_GET['id']))
+        {
+            $id=$_GET['id'];
+            $sql="DELETE FROM `booking` WHERE `ID`=$id";
+            if($this->connect()->query($sql) == TRUE)
+            {
+                print "<script><alert>return confirm('Are you sure you want to delete this Reservartion') style='position: absolute;''><input type= 'submit' name='delete' id='delete' value='Delete Records'</alert></script>";
+            }
+            else
+            {
+                echo "There is a problem";
+            }
+            header("Location:ShowBook.php");
+        }
+        else
+        {
+            die('Id not found');
+        }
+    }
 }
 
 
-}
+
 
 ?>

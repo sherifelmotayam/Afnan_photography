@@ -128,7 +128,6 @@ class Packages extends conn
         }
         $sql2="SELECT * FROM `packages` WHERE City ='$city' AND ID_Package_Type ='.$this->ID.' ";
         $stmt=$this->connect()->query($sql2);
- 
         while($row=$stmt->fetch())
         {
             $this->price=$row['Price'];
