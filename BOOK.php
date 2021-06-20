@@ -62,7 +62,7 @@ include 'includes/class-autoloaded.php';
 
           <div class="input-box">
             <span class="details">Package Type</span>
-                <input list="Package" name="package" placeholder="Select your package">
+                <input list="Package" name="package" placeholder="Select your package" value="<?php if (isset($_POST["package"])){ echo $_POST["package"];}?>">
                 <datalist id="Package">
                 <?php $package=new UserValidation(); $package->displayPackage();?>
                 </datalist>
@@ -125,6 +125,7 @@ if (isset($_POST['ahmed']))
   $test->setData($_POST['fn'],$_POST['ln'],$_POST['phone'],$_POST['loc'],$_POST['package'],$_POST['date'],$_POST['time'],$_POST['Comment']);
   $test->checkdate();
   $test->check_validation();
+
   
   //echo   "<script type='text/javascript'>sendEmail();</script>";
 }

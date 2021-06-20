@@ -37,8 +37,13 @@ class UserValidation extends conn
 
   function check_validation()
   {
+    if( empty($this->getLastName()) or empty($this->getFirstName()) or empty($this->getPhone()) or empty($this->getLocation()) or empty($this->getDate()) or empty($this->getTime()) or empty($this->getComment()) or empty($this->getPackage())){
+      echo '<script type="text/JavaScript">swal("Please fill in all the data!", {buttons: false,timer: 3000});;</script>';
+      die ();
 
-    if(!preg_match("/^[a-zA-Z'-]+$/",$this->getFirstName() ) and empty($this->getFirstName())  ){
+    }
+
+    else if(!preg_match("/^[a-zA-Z'-]+$/",$this->getFirstName() ) or empty($this->getFirstName())  ){
 
      echo '<script type="text/JavaScript">swal("Sorry!", "invalid first name","error");</script>';
         die ();
@@ -67,7 +72,8 @@ class UserValidation extends conn
             //To avoid The sql injection
             $s->execute([$this->getFirstName()]);
                    echo '<script type="text/JavaScript"> 
-     swal("Good job!", "Reservation received", "success");
+     swal("Good job!", "Reservation received", "success",buttons: false, timer: 3000);
+     
      </script>';
 
 
@@ -78,18 +84,20 @@ class UserValidation extends conn
   function checkdate()
   {
     $n=new conn();
-    $sql = "SELECT `Date` FROM booking WHERE `Date` = '".$this->date."'";
+    $sql = "SELECT `Date` FROM booking WHERE `Date` = '".$this->getDate()."'";
     $stmt=$n->connect()->query($sql);
-    
+    if(!empty($this->getDate())){
     if($stmt->rowCount())
     {
        echo '<script type="text/JavaScript"> 
      swal("Sorry!", "this date already received", "error");
      </script>';
       exit();
+      
 
   
     }
+  }
 }
 
 

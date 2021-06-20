@@ -19,7 +19,7 @@
             <a href="#p1"><img src="images/icon.jpg" alt="Afnan"></a>  
         </div>
          <div class = "section" id = "p1">
-            <span class ="name"> Afnan Mohamed Mahmoud Gharid </span>
+            <span class ="name"> Afnan Mohamed Mahmoud Gharib </span>
              <span class ="border"> </span>
              <p>
               <h2>The Greatest places that I worked in:</h2>
